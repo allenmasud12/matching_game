@@ -13,4 +13,7 @@ A Flutter plugin for an interactive drag-and-drop question-answer matching game.
 Add this to your `pubspec.yaml`:
 ```yaml
 dependencies:
-  question_matching_game: ^0.1.0
+  matching_game: ^0.1.0
+
+![image](https://github.com/user-attachments/assets/65787d44-2bc0-4dad-98ad-060eda39f4d0)
+![image](https://github.com/user-attachments/assets/9eaee06d-4c31-41ac-908e-26bd20728f5d)
