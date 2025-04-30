@@ -1,6 +1,6 @@
 name: matching_game
 description: A Flutter plugin for an interactive drag-and-drop question-answer matching game supporting flexible data formats.
-version: 0.1.0
+version: 0.1.2
 homepage: https://github.com/allenmasud12/matching_game
 repository: https://github.com/allenmasud12/matching_game
 issue_tracker: https://github.com/allenmasud12/matching_game/issues
