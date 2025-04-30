@@ -1,15 +1,16 @@
 # matching_game
 
-A new Flutter plugin project.
+A Flutter plugin for an interactive drag-and-drop question-answer matching game. Supports flexible data formats, allowing users to provide questions in JSON, Map, or custom classes.
 
-## Getting Started
+## Features
+- Drag-and-drop answer matching
+- Customizable colors, text styles, and number of questions per set
+- Supports JSON, Map, and custom data formats
+- Feedback for correct/incorrect answers
+- Responsive and accessible UI
 
-This project is a starting point for a Flutter
-[plug-in package](https://flutter.dev/to/develop-plugins),
-a specialized package that includes platform-specific implementation code for
-Android and/or iOS.
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-
+## Installation
+Add this to your `pubspec.yaml`:
+```yaml
+dependencies:
+  question_matching_game: ^0.1.0

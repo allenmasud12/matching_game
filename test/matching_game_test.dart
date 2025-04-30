@@ -1,29 +1,52 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:matching_game/matching_game.dart';
-import 'package:matching_game/matching_game_platform_interface.dart';
-import 'package:matching_game/matching_game_method_channel.dart';
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import 'package:get/get.dart';
+import 'package:matching_game/src/controllers/matching_game_controller.dart';
+import 'package:matching_game/src/models/question.dart';
 
-class MockMatchingGamePlatform
-    with MockPlatformInterfaceMixin
-    implements MatchingGamePlatform {
-
-  @override
-  Future<String?> getPlatformVersion() => Future.value('42');
-}
 
 void main() {
-  final MatchingGamePlatform initialPlatform = MatchingGamePlatform.instance;
+  group('Question Model', () {
+    test('fromMap creates Question from Map', () {
+      final map = {'text': 'What is 2+2?', 'answer': '4'};
+      final question = Question.fromMap(map);
+      expect(question.text, 'What is 2+2?');
+      expect(question.answer, '4');
+    });
 
-  test('$MethodChannelMatchingGame is the default instance', () {
-    expect(initialPlatform, isInstanceOf<MethodChannelMatchingGame>());
+    test('fromDynamic creates Question from custom data', () {
+      final customData = {'quiz': 'Capital of France?', 'result': 'Paris'};
+      final question = Question.fromDynamic(
+        customData,
+        textExtractor: (item) => item['quiz'].toString(),
+        answerExtractor: (item) => item['result'].toString(),
+      );
+      expect(question.text, 'Capital of France?');
+      expect(question.answer, 'Paris');
+    });
   });
 
-  test('getPlatformVersion', () async {
-    MatchingGame matchingGamePlugin = MatchingGame();
-    MockMatchingGamePlatform fakePlatform = MockMatchingGamePlatform();
-    MatchingGamePlatform.instance = fakePlatform;
+  group('QuestionMatchingGameController', () {
+    late MatchingGameController controller;
 
-    expect(await matchingGamePlugin.getPlatformVersion(), '42');
+    setUp(() {
+      controller = MatchingGameController(
+        questions: [
+          Question(text: 'What is 2+2?', answer: '4'),
+          Question(text: 'Capital of France?', answer: 'Paris'),
+        ],
+        questionsPerSet: 2,
+      );
+    });
+
+    test('loadQuestions should populate currentQuestions', () {
+      controller.loadQuestions();
+      expect(controller.currentQuestions.length, 2);
+    });
+
+    test('checkAnswers should set matchResults', () {
+      controller.userAnswers.assignAll(['4', 'Paris']);
+      controller.checkAnswers();
+      expect(controller.matchResults, [true, true]);
+    });
   });
 }
