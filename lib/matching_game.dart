@@ -17,11 +17,15 @@ class MatchingGame extends StatelessWidget {
   /// Primary color for the UI.
   final Color primaryColor;
 
+  final Color titleColor;
+
   /// Optional text style for questions.
   final TextStyle? questionTextStyle;
 
   /// Optional text style for answers.
   final TextStyle? answerTextStyle;
+
+
 
   const MatchingGame({
     super.key,
@@ -30,6 +34,7 @@ class MatchingGame extends StatelessWidget {
     this.primaryColor = Colors.teal,
     this.questionTextStyle,
     this.answerTextStyle,
+    this.titleColor = const Color(0xFFA5D6A7),
   });
 
   /// Creates a [QuestionMatchingGame] from a list of dynamic data.
@@ -97,7 +102,7 @@ class MatchingGame extends StatelessWidget {
                     children: [
                       // Header Row
                       TableRow(
-                        decoration: BoxDecoration(color: Colors.green.shade200),
+                        decoration: BoxDecoration(color: titleColor),
                         children: const [
                           TableCell(
                             child: Padding(
@@ -308,8 +313,8 @@ class MatchingGame extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
-                          child: Row(
-                            children: const [
+                          child: const Row(
+                            children: [
                               Icon(Icons.refresh, color: Colors.white),
                               Text(
                                 ' Reset',
@@ -332,8 +337,8 @@ class MatchingGame extends StatelessWidget {
                               borderRadius: BorderRadius.circular(4.0),
                             ),
                           ),
-                          child: Row(
-                            children: const [
+                          child: const Row(
+                            children: [
                               Text(
                                 'Next ',
                                 style: TextStyle(
