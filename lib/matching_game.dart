@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'src/controllers/matching_game_controller.dart';
 import 'src/models/question.dart';
+export 'src/models/question.dart';
 
 /// A widget that displays an interactive question-answer matching game.
 class MatchingGame extends StatelessWidget {

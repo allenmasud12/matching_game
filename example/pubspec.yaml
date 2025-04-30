@@ -1,7 +1,7 @@
-name: question_matching_game_example
+name: matching_game_example
 description: A new Flutter project.
 
-publish_to: 'none' # Prevents accidental publishing of the example
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -11,9 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  question_matching_game:
-    path: ../ # Points to the main plugin in the parent directory
-  get: ^4.6.6 # Required by the plugin
+  matching_game:
+    path: ../
+  get: ^4.6.6
 
 dev_dependencies:
   flutter_test:

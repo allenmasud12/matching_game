@@ -1,6 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:matching_game/matching_game.dart';
 
+// Custom class defined outside the widget
+class QuizItem {
+  final String quizText;
+  final String result;
+
+  QuizItem(this.quizText, this.result);
+}
+
 void main() {
   runApp(const MyApp());
 }
@@ -112,8 +120,13 @@ class StandardQuestionExample extends StatelessWidget {
         primaryColor: Colors.blue,
         questionsPerSet: 3,
         questionTextStyle: const TextStyle(
-            fontSize: 16, fontWeight: FontWeight.bold),
-        answerTextStyle: const TextStyle(fontSize: 14, color: Colors.white),
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+        ),
+        answerTextStyle: const TextStyle(
+          fontSize: 14,
+          color: Colors.white,
+        ),
       ),
     );
   }
@@ -130,7 +143,7 @@ class JsonDataExample extends StatelessWidget {
       {'question': 'What is 5x5?', 'correct_answer': '25'},
       {
         'question': 'Who wrote Romeo and Juliet?',
-        'correct_answer': 'Shakespeare'
+        'correct_answer': 'Shakespeare',
       },
     ];
 
@@ -153,31 +166,23 @@ class CustomClassExample extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Custom class definition
-    class QuizItem {
-    final String quizText;
-    final String result;
-
-    QuizItem(this.quizText, this.result);
-    }
-
     final customData = [
-    QuizItem('What is the currency of USA?', 'Dollar'),
-    QuizItem('Who painted the Mona Lisa?', 'Da Vinci'),
-    QuizItem('What is H2O?', 'Water'),
+      QuizItem('What is the currency of USA?', 'Dollar'),
+      QuizItem('Who painted the Mona Lisa?', 'Da Vinci'),
+      QuizItem('What is H2O?', 'Water'),
     ];
 
     return Scaffold(
-    appBar: AppBar(title: const Text('Custom Class')),
-    body: MatchingGame.fromDynamic(
-    customData,
-    textExtractor: (item) => item.quizText,
-    answerExtractor: (item) => item.result,
-    primaryColor: Colors.purple,
-    questionsPerSet: 3,
-    ),
+      appBar: AppBar(title: const Text('Custom Class')),
+      body: MatchingGame.fromDynamic(
+        customData,
+        textExtractor: (item) => item.quizText,
+        answerExtractor: (item) => item.result,
+        primaryColor: Colors.purple,
+        questionsPerSet: 3,
+      ),
     );
-    }
+  }
 }
 
 // Example 4: Map Data
